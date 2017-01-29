@@ -1,4 +1,4 @@
-FROM ubuntu:utopic
+FROM debian:jessie
 
 MAINTAINER Puguh Wijayanto
 
@@ -20,7 +20,13 @@ VOLUME ["/var/www/html"]
 RUN chmod -R 777 /var/www/html/assets/images && \
 	chmod -R 777 /var/www/html/assets/images/uploads && \
 	chmod -R 777 /var/www/html/assets/images/uploads/thumbs && \
+	chmod -R 777 /var/www/html/assets/media/audio && \
+	chmod -R 777 /var/www/html/assets/media/images && \
+	chmod -R 777 /var/www/html/assets/media/videos && \
+	chmod -R 777 /var/www/html/assets/cache && \
+	chmod -R 777 /var/www/html/assets/cache/thumbs && \
 	chmod -R 777 /var/www/html/inc/mod && \
+	chmod -R 777 /var/www/html/inc/config && \
 	chmod -R 777 /var/www/html/inc/themes
 
 RUN sed -i -e 's/^listen =.*/listen = \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
